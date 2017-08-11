@@ -1,9 +1,11 @@
+
 public class Flower {
     private String name;
     private int cost;
     private int length;
     private int old;
-    private String form;
+    private Forms form;
+
 
 
     public Flower(String name, int cost, int lengtn, int old) {
@@ -15,6 +17,13 @@ public class Flower {
     }
 
 
+    public Flower(String name, int cost, int length, Forms form) {
+        this.name = name;
+        this.cost = cost;
+        this.length = length;
+        this.form = form;
+    }
+
 
     @Override
     public String toString() {
@@ -25,6 +34,7 @@ public class Flower {
                 ", length=" + length +
                 '}';
     }
+
 
     public int getCost() {
         return cost;
@@ -43,19 +53,38 @@ public class Flower {
         return name;
     }
 
-    public String getForm() {
+    public Forms getForm() {
         return form;
     }
 }
 
 
+public class Kaktus extends Flower{
+    private String name;
+    private int cost;
+    private int length;
+    private Forms form;
+    public Kaktus(String name, int cost, int length, Forms form){
+        super(name,cost, length, form);
+    }
+    
+    
+    
+    
+    public enum Forms {
+    round,
+    longer,
+    square
+}
 
 
 
 
 import java.util.ArrayList;
 
-
+/**
+ * Created by Boss on 09.08.2017.
+ */
 public class Buket extends ArrayList<Flower> {
 
     public double getFresh (){
@@ -70,6 +99,25 @@ public class Buket extends ArrayList<Flower> {
         this.add(f);
         return this;
     }
+    public  void getPrice (){
+        int sum = 0;
+        for (Flower f:  this){
+            sum = sum + f.getCost();
+        }
+        System.out.println("Price " + this + " is " + sum+"\n");
+    }
+    public  void maxLength(){
+        int l = this.get(0).getLength();
+        Flower flower=this.get(0);
+        for (Flower f : this){
+            if (l < f.getLength()){
+                l = f.getLength();
+                flower = f;
+            }
+        }
+        System.out.println("The longest flower in "+this+" is " + flower+"\n");
+
+    }
 
     @Override
     public String toString() {
@@ -80,7 +128,6 @@ public class Buket extends ArrayList<Flower> {
         return "Buket{ \n" + line + " }";
     }
 }
-
 
 
 
@@ -105,25 +152,7 @@ public class Shop  {
     }
 
 
-    public static void getPrice (Buket buk){
-        int sum = 0;
-        for (Flower f:  buk){
-            sum = sum + f.getCost();
-        }
-        System.out.println("Price " + buk + " is " + sum+"\n");
-    }
-    public static void maxLength(Buket buk){
-        int l = buk.get(0).getLength();
-        Flower flower=buk.get(0);
-        for (Flower f : buk){
-            if (l < f.getLength()){
-                l = f.getLength();
-                flower = f;
-            }
-        }
-        System.out.println("The longest flower in "+buk+" is " + flower+"\n");
 
-    }
 
     public  void Fresher(){
         double fresh = this.bukets.get(0).getFresh();
@@ -180,23 +209,26 @@ public class Shop  {
         Flower rom1 = new Flower("romashka",15,43,2);
         Flower rom2 = new Flower("romashka",22,54,1);
         Flower rom3 = new Flower("romashka",56,88,2);
+        Kaktus k1 = new Kaktus("kakatus",66,23,Forms.round);
 
 
 
 
         Buket buk1 = new Buket();
         buk1.addFl(r1).addFl(l1).addFl(rom1);
-        getPrice(buk1);
+        buk1.getClass();
 
 
         Buket buk2 = new Buket();
         buk2.addFl(r2).addFl(l2).addFl(rom2);
-        maxLength(buk2);
+        buk2.maxLength();
+
 
         Buket buk3 = new Buket();
         buk3.addFl(r3).addFl(l3).addFl(rom3);
 
         addFlower(buk1,r2);
+        addFlower(buk2,k1);
 
         ArrayList<Buket> buketsInShop = new ArrayList<Buket>();
         buketsInShop.add(buk1);
@@ -206,13 +238,19 @@ public class Shop  {
         shop.addBuket(buk2);
         shop.Fresher();
 
-        shop.findBuketwithFlower(r3);
+        shop.findBuketwithFlower(r2);
+
+
+
+
+
 
 
 
 
     }
 }
+
 
 
 
