@@ -1,0 +1,192 @@
+
+abstract class Plant {
+    private String name;
+    private double  cost;
+    private int length;
+
+    public Plant(String name, double cost, int length) {
+        this.name = name;
+        this.cost = cost;
+        this.length = length;
+    }
+
+
+    public String getName() {
+        return name;
+    }
+
+    public int getLength() {
+        return length;
+    }
+
+    public double getCost() {
+        return cost;
+    }
+
+    public void setCost(double cost) {
+        this.cost = cost;
+    }
+
+    public void setLength(int length) {
+        this.length = length;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+}
+
+
+
+
+public class Flower extends Plant {
+    private int old;
+
+    public Flower(String name, double cost, int length, int old) {
+        super(name, cost, length);
+        this.old = old;
+    }
+
+    public int getOld() {
+        return old;
+    }
+
+    @Override
+    public String toString() {
+        {
+            return "Flower{" +
+                    "cost=" + this.getCost() +
+                    ", name='" + this.getName() + '\'' +
+                    ", length=" + this.getLength() +
+                    ", old=" + old +
+                    "} + \n";
+        }
+
+    }
+}
+
+
+
+
+
+
+public class Cactus extends Plant{
+    Form form;
+
+    public Cactus(String name, double cost, int length, Form form) {
+        super(name, cost, length);
+        this.form = form;
+    }
+
+    public Form getForm() {
+        return form;
+    }
+
+    @Override
+    public String toString() {
+        return "Cactus{" +
+                "cost=" + this.getCost() +
+                ", name='" + this.getName() + '\'' +
+                ", length=" + this.getLength() +
+                ", form=" + form +
+                '}';
+    }
+}
+
+
+
+
+
+import java.util.ArrayList;
+import java.util.List;
+
+
+public class Bouquet {
+    private  List<Flower> flowers = new ArrayList<Flower>();
+    private  List<Cactus> cactuses = new ArrayList<Cactus>();
+
+    public Bouquet(List<Cactus> cactuses, List<Flower> flowers) {
+        this.cactuses = cactuses;
+        this.flowers = flowers;
+    }
+
+
+    public Bouquet() {
+    }
+
+    public void add(Flower  f){
+        this.flowers.add(f);
+    }
+    public void add(Cactus  c){
+        this.cactuses.add(c);
+    }
+
+    public List<Flower> getFlowersList() {
+        return flowers;
+    }
+
+    public List<Cactus> getCactusesList() {
+        return cactuses;
+
+    }
+
+    public void getPrice(){
+        double price = 0;
+        for (Flower f:flowers){
+            price = price + f.getCost();
+        }
+        for (Cactus c : cactuses){
+            price = price + c.getCost();
+        }
+        System.out.println("Price " + this + " is " + price +"\n");
+    }
+
+    public Flower maxLength(){
+        int i = flowers.get(0).getLength();
+        Flower longestF = flowers.get(0);
+        for (Flower f:this.flowers){
+            if (i<f.getLength()){
+                i=f.getLength();
+                longestF =f;
+            }
+        }
+            System.out.println("The longest  in "+this+" is " + longestF +"\n");
+        return  longestF;
+        }
+
+
+    public double getFresh (){
+        double sum = 0;
+        for (Flower f : this.flowers){
+            sum = sum + f.getOld();
+        }
+        sum = sum/ this.flowers.size();
+        return sum;
+    }
+
+    @Override
+    public String toString() {
+        String line = "";
+        for (Flower f : this.flowers){
+            line = line + f.toString()+ "\n";
+        }
+        for (Cactus c : this.cactuses){
+            line = line + c.toString()+ "\n";
+        }
+        return "Bouquet{ \n" + line + " }";
+    }
+
+    }
+
+
+
+
+
+
+
+public enum Form {
+    round,
+    longer,
+    square
+}
+
