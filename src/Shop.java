@@ -15,8 +15,8 @@ public class Shop {
         return bouquet;
     }
     public  List<Bouquet> addBuket(Bouquet b){
-        this.bukets.add(b);
-        return  this.bukets;
+        bukets.add(b);
+        return  bukets;
     }
 
     public List<Bouquet> getBukets() {
@@ -28,25 +28,25 @@ public class Shop {
     }
 
     public  void fresher(){
-        double fresh = this.bukets.get(0).getFresh();
+        double fresh = bukets.get(0).getFresh();
 
-        Bouquet buket = this.bukets.get(0);
-        for (Bouquet b : this.bukets){
-            if (fresh > b.getFresh()){
-                fresh = b.getFresh();
+        Bouquet buket = bukets.get(0);
+        for (Bouquet bouquet : bukets){
+            if (fresh > bouquet.getFresh()){
+                fresh = bouquet.getFresh();
 
-                buket = b;
+                buket = bouquet;
             }
         }
         System.out.println("The Fresher buket in " + this+" is "+buket+"\n");
 
     }
-    public  void findBuketWithFlower(Flower f){
+    public  void findBuketWithFlower(Flower flower){
         boolean tic = true;
-        for(Bouquet buk: this.bukets){
-            for (Flower fl : buk.getFlowersList()){
-                if(f.equals(fl)){
-                    System.out.println(f + " is in "+ buk+"\n");
+        for(Bouquet bouquet: this.bukets){
+            for (Flower otherFlower : bouquet.getFlowersList()){
+                if(flower.equals(otherFlower)){
+                    System.out.println(flower + " is in "+ bouquet+"\n");
                     tic = false;
                     break;
                 }
@@ -54,15 +54,15 @@ public class Shop {
             }
         }
         if (tic){
-            System.out.println("We don't have buket with this " + f+"\n");
+            System.out.println("We don't have buket with this " + flower+"\n");
         }
     }
-    public  void findBuketWithCactus(Cactus f){
+    public  void findBuketWithCactus(Cactus cactus){
         boolean tic = true;
         for(Bouquet buk: this.bukets){
-            for (Cactus fl : buk.getCactusesList()){
-                if(f.equals(fl)){
-                    System.out.println(f + " is in "+ buk+"\n");
+            for (Cactus otherCactus : buk.getCactusesList()){
+                if(cactus.equals(otherCactus)){
+                    System.out.println(cactus + " is in "+ buk+"\n");
                     tic = false;
                     break;
                 }
@@ -70,7 +70,7 @@ public class Shop {
             }
         }
         if (tic){
-            System.out.println("We don't have buket with this " + f+"\n");
+            System.out.println("We don't have buket with this " + cactus+"\n");
         }
     }
 
@@ -85,7 +85,7 @@ public class Shop {
         Flower liliaNice = new Flower("liliaNice",80,81,5);
         Flower romashkaCool = new Flower("romashkaCool",15,33,2);
         Flower romashkaNice = new Flower("romashkaNice",22,24,1);
-        Flower romashkaLong = new Flower("romashkaLong",56,58,2);
+        Flower romashkaLong = new Flower("romashkaLong",56,59,2);
         Cactus cactusRound = new Cactus("kakatusRound",66,23,Form.Round);
         Cactus cactusLong = new Cactus("kakatusLong",100,85,Form.Longer);
 
