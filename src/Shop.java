@@ -38,15 +38,15 @@ public class Shop {
                 buket = bouquet;
             }
         }
-        System.out.println("The Fresher bouquet in " + this+" is "+buket+"\n");
+        System.out.println("The Fresher bouquet in " + this + " is "+ buket + "\n");
 
     }
     public  void findBuketWithFlower(Flower flower){
         boolean tic = true;
-        for(Bouquet bouquet: this.bouquets){
-            for (Flower otherFlower : bouquet.getFlowersList()){
+        for(Bouquet bouquet : this.bouquets){
+            for (Flower otherFlower : bouquet.getFlowers()){
                 if(flower.equals(otherFlower)){
-                    System.out.println(flower + " is in "+ bouquet+"\n");
+                    System.out.println(flower + " is in " + bouquet + "\n");
                     tic = false;
                     break;
                 }
@@ -59,8 +59,8 @@ public class Shop {
     }
     public  void findBuketWithCactus(Cactus cactus){
         boolean tic = true;
-        for(Bouquet buk: this.bouquets){
-            for (Cactus otherCactus : buk.getCactusesList()){
+        for(Bouquet buk : this.bouquets){
+            for (Cactus otherCactus : buk.getCactuses()){
                 if(cactus.equals(otherCactus)){
                     System.out.println(cactus + " is in "+ buk+"\n");
                     tic = false;
@@ -70,7 +70,7 @@ public class Shop {
             }
         }
         if (tic){
-            System.out.println("We don't have bouquets with this " + cactus+"\n");
+            System.out.println("We don't have bouquets with this " + cactus + "\n");
         }
     }
 
@@ -86,8 +86,8 @@ public class Shop {
         Flower romashkaCool = new Flower("romashkaCool",15,33,2);
         Flower romashkaNice = new Flower("romashkaNice",22,24,1);
         Flower romashkaLong = new Flower("romashkaLong",56,59,2);
-        Cactus cactusRound = new Cactus("kakatusRound",66,23,Form.Round);
-        Cactus cactusLong = new Cactus("kakatusLong",100,85,Form.Longer);
+        Cactus cactusRound = new Cactus("kakatusRound",66,23,Form.ROUND);
+        Cactus cactusLong = new Cactus("kakatusLong",100,85,Form.LONGER);
 
 
 
@@ -99,7 +99,7 @@ public class Shop {
         buk1.add(romashkaCool);
         buk1.add(cactusRound);
         System.out.println(buk1);
-        buk1.getFresh();
+        System.out.println(buk1.getFresh());
         buk1.getPrice();
         buk1.maxLength();
 
@@ -131,8 +131,6 @@ public class Shop {
 
        shop.findBuketWithFlower(romashkaNice);
         shop.findBuketWithCactus(cactusLong);
-
-
 
 
 

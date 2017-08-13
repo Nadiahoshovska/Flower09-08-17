@@ -14,10 +14,10 @@ public class Cactus extends Plant{
     @Override
     public String toString() {
         return "Cactus{" +
-                "cost=" + this.getCost() +
-                ", name='" + this.getName() + '\'' +
-                ", length=" + this.getLength() +
-                ", form=" + form +
+                "cost = " + this.getCost() +
+                ", name = '" + this.getName() + '\'' +
+                ", length =" + this.getLength() +
+                ", form = " + form +
                 '}';
     }
 }

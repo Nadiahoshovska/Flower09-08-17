@@ -1,7 +1,7 @@
 
 public enum Form {
-    Round,
-    Longer,
-    Square
+    ROUND,
+    LONGER,
+    SQUARE
 }
 

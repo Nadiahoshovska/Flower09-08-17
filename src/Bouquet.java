@@ -22,18 +22,18 @@ public class Bouquet {
         this.cactuses.add(c);
     }
 
-    public List<Flower> getFlowersList() {
+    public List<Flower> getFlowers() {
         return flowers;
     }
 
-    public List<Cactus> getCactusesList() {
+    public List<Cactus> getCactuses() {
         return cactuses;
 
     }
 
     public void getPrice(){
         double price = 0;
-        for (Flower flower:flowers){
+        for (Flower flower : flowers){
             price = price + flower.getCost();
         }
         for (Cactus cactus : cactuses){
@@ -45,13 +45,13 @@ public class Bouquet {
     public Flower maxLength(){
         int lengthFlower = flowers.get(0).getLength();
         Flower longestFlower = flowers.get(0);
-        for (Flower flower:flowers){
-            if (lengthFlower<flower.getLength()){
-                lengthFlower=flower.getLength();
-                longestFlower =flower;
+        for (Flower flower : flowers){
+            if (lengthFlower < flower.getLength()){
+                lengthFlower = flower.getLength();
+                longestFlower = flower;
             }
         }
-            System.out.println("The longest  in "+this+" is " + longestFlower +"\n");
+            System.out.println("The longest  in " + this + " is " + longestFlower + "\n");
         return  longestFlower;
         }
 
@@ -59,9 +59,9 @@ public class Bouquet {
     public double getFresh (){
         double sum = 0;
         for (Flower flower : flowers){
-            sum = sum + flower.getOld();
+            sum = sum + flower.getDays();
         }
-        sum = sum/ flowers.size();
+        sum = sum/flowers.size();
         return sum;
     }
 
