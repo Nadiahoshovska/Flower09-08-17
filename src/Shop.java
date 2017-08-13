@@ -3,7 +3,7 @@ import java.util.List;
 
 
 public class Shop {
-    private List<Bouquet> bukets=new ArrayList<Bouquet>() ;
+    private List<Bouquet> bouquets=new ArrayList<Bouquet>() ;
 
     public static Bouquet add (Bouquet bouquet, Flower flower){
         bouquet.add(flower);
@@ -15,35 +15,35 @@ public class Shop {
         return bouquet;
     }
     public  List<Bouquet> addBuket(Bouquet b){
-        bukets.add(b);
-        return  bukets;
+        bouquets.add(b);
+        return  bouquets;
     }
 
     public List<Bouquet> getBukets() {
-        return bukets;
+        return bouquets;
     }
 
     public void setBukets(List<Bouquet> bukets) {
-        this.bukets = bukets;
+        this.bouquets = bukets;
     }
 
     public  void fresher(){
-        double fresh = bukets.get(0).getFresh();
+        double fresh = bouquets.get(0).getFresh();
 
-        Bouquet buket = bukets.get(0);
-        for (Bouquet bouquet : bukets){
+        Bouquet buket = bouquets.get(0);
+        for (Bouquet bouquet : bouquets){
             if (fresh > bouquet.getFresh()){
                 fresh = bouquet.getFresh();
 
                 buket = bouquet;
             }
         }
-        System.out.println("The Fresher buket in " + this+" is "+buket+"\n");
+        System.out.println("The Fresher bouquet in " + this+" is "+buket+"\n");
 
     }
     public  void findBuketWithFlower(Flower flower){
         boolean tic = true;
-        for(Bouquet bouquet: this.bukets){
+        for(Bouquet bouquet: this.bouquets){
             for (Flower otherFlower : bouquet.getFlowersList()){
                 if(flower.equals(otherFlower)){
                     System.out.println(flower + " is in "+ bouquet+"\n");
@@ -54,12 +54,12 @@ public class Shop {
             }
         }
         if (tic){
-            System.out.println("We don't have buket with this " + flower+"\n");
+            System.out.println("We don't have bouquet with this " + flower+"\n");
         }
     }
     public  void findBuketWithCactus(Cactus cactus){
         boolean tic = true;
-        for(Bouquet buk: this.bukets){
+        for(Bouquet buk: this.bouquets){
             for (Cactus otherCactus : buk.getCactusesList()){
                 if(cactus.equals(otherCactus)){
                     System.out.println(cactus + " is in "+ buk+"\n");
@@ -70,7 +70,7 @@ public class Shop {
             }
         }
         if (tic){
-            System.out.println("We don't have buket with this " + cactus+"\n");
+            System.out.println("We don't have bouquets with this " + cactus+"\n");
         }
     }
 
